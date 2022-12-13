@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+
+
+
+<div class="container"style='padding-left: 6vh; margin-top:10vh ;
+padding-bottom: 25px;
+font-family: Arial;
+letter-spacing: 1.2px;
+color: white;
+line-height: 30px;
+ '>
+ <center>
+<div class="row justify-content-center">
+
+                <div class="col-lg-5 mb-5 mb-lg-0">
+
+                 <h3>Registration</h3> 
+                    <form action="" method="POST">{% csrf_token %}
+
+                        {{ form|bootstrap }}
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Register" class="btn btn-primary btn-md text-white">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </center>
+        </div>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyAPurpHf0cbK1U684_Q67QHsn2f5U2Y6og",
+              authDomain: "chatbot-b7646.firebaseapp.com",
+              projectId: "chatbot-b7646",
+              storageBucket: "chatbot-b7646.appspot.com",
+              messagingSenderId: "344015977001",
+              appId: "1:344015977001:web:4af07bf5fa1cf542773a38",
+              measurementId: "G-31VCTRHECD"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          </script>
+{% endblock %}

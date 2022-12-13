@@ -1,0 +1,42 @@
+{% load static %}
+<div class="navbar">
+    <div class="icon">
+        <h2 class ="logo">Arlington Car Services</h2>
+    </div>
+    <div class="menu">
+        {% if request.user.is_authenticated %}
+
+        <ul>
+            <li><a href="{% url 'shop:product_list' %}">HOME</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">SERVICE</a></li>
+            <li><a href="#">DESIGN</a></li>
+            <li><a href="{% url 'shop:product_list' %}">cars</a></li>
+            <li><a href="{% url 'accounts:logout' %}"> LOGOUT</a></li>
+
+        </ul>
+      
+    </div> 
+    <div class="search">
+        <input class="srch" type="search" name="" placeholder="ASK">
+        <a href="#"> <button class="btn">Search</button></a>
+    </div>
+    {% else %}
+    <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">SERVICE</a></li>
+        <li><a href="#">DESIGN</a></li>
+        <li><a href="#">CONTACT</a></li>
+
+      </ul>
+   
+   </div> 
+   <div class="search">
+    <input class="srch" type="search" name="" placeholder="ASK">
+    <a href="#"> <button class="btn">Search</button></a>
+   </div>
+
+
+    {% endif %}
+</div>

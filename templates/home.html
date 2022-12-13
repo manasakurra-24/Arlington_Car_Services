@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block js %}
+        <script type="text/javascript" src="/static/js/script.js"></script>
+       <script>
+        function closeForm() {
+            document.getElementById("4m").style.display = "none";
+            document.getElementById("myForm").style.display = "none";
+            document.getElementById("chaty").style.display = "block";
+          
+        }
+        
+        
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+            document.getElementById("chaty").style.display = "none";
+              
+        }</script>
+      {% endblock %}   
+
+{% block content %}
+
+<div class="content">
+    <h1>Welcome <br><span>To</span> <br>ACS</h1>
+    <p class="par">Arlington car services is an auto repair shop serving Arlington.<br>Our trained technicians are committed to using their expertise <br> experience to provide high-quality and honest auto repair at a competitive price. 
+        <br> Call or chat with us today to take care of all your Auto Repair needs.</p>
+        <button class="cn"><a href="#">CONTACT US</a></button>
+        {% if request.user.is_authenticated %}
+        <button id="chaty" class="open-button"style="position:fixed;
+        width:60px;
+        height:60px;
+        bottom:20px;
+        right:40px;
+        background-color:#0C9;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;" onclick="openForm()">Chat</button>
+        <div class="chat" style="display:flex; float:Right; position:fixed;
+bottom:50px;
+right:4px;">        
+
+
+<div class="chat-popup" style="
+overflow-y: auto;
+border-radius: 10px;
+background-color:  rgb(58, 56, 56);opacity: 1;"id="myForm">
+  <form action="/action_page.php" id="4m"style="display:flex;flex-direction:column-reverse;"class="form-container">
+    <div id="app" class="container top-padding">
+        <div class="row1">
+            <div class="col-md-12">
+                <div class="card1" style="font-size: 0.875em;"v-for="message in messages" v-bind:class="{ 'user-message': message.user,  'chat-message': message.chat_bot, 'offset-md-6': message.chat_bot}">
+                    <div class="card-body">
+                        [[message.text]]
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+        <div id="text-box" class="row top-padding">
+            <div class="col-md-12">
+                <textarea class="form-control" v-bind:placeholder="placeholder" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content"></textarea>
+                <i class="fas fa-arrow-circle-right send-btn" v-on:click="add_message"></i>
+            </div>
+        </div>
+    </div>
+    <div class="chatnav"style="display:flex;justify-content:space-between; background-color:inherit;">
+        <h2 style="font-size: 22px;;height:inherit; padding: 15px; color:#87CEEB;font-family: sans-serif;">Ask me</h2>
+    <a style="float:right; display:block; width:2vh; padding-right:25px;padding-top:15px;cursor: pointer;" class="btn1 cancel" onclick="closeForm()">X</a>
+    </div>
+  </form>
+</div>
+</div>
+        {% else %}
+        <div class="form">
+            <h2>Login Here</h2>
+            <input type="username" name="username" placeholder="Enter username">
+            <input type="password" name="" placeholder="Enter Password Here">
+            <button class="btnn"><a href="{% url 'accounts:login' %}">Login</a></button>
+
+            <p class="link">Don't have an account<br>
+                <a href="{% url 'accounts:register' %}">Sign up </a> here</a></p>
+                <p class="liw">Log in with</p>
+            <div class="icons">
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-snapchat"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+            </div>
+        </div> 
+        {% endif %}
+
+          
+{% endblock %}

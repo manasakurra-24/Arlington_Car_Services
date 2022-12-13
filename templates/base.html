@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webpage design{% block title %}{{ title }}{% endblock %}</title>
+	<!--link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+	<script type="text/javascript" src="/static/js/dev-vue.js"></script>
+	{% block css %} {% endblock %}
+
+	{% block js %}{% endblock %}
+	<link rel="stylesheet" href="{% static 'style2.css' %}">
+	<link rel="stylesheet" href="{% static 'bootstrap1.min.css' %}">
+</head>
+<body>
+	<div class ="main">
+	{% include 'nav.html' %}
+
+	
+	<!-- ***** Header Area End ***** -->
+		{% block content %}
+	{% endblock  %}
+	
+
+	</div> 
+	<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</html>
